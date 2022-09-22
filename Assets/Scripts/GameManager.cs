@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: Kilan Larsen
+ * Description: Manages background information for the game - such as setting the time of day
+ * Last Modified: 9/22/22
+*/
+
 public enum TimeOfDay
 {
     Morning,
@@ -23,23 +29,29 @@ public class GameManager : SingletonPattern<GameManager>
     //Set the time of day to Morning, Afternoon, or Night randomly
     private void SetRandomTimeOfDay()
     {
-        int randTimeIndex = Random.Range(0, 2);
+        int randTimeIndex = Random.Range(0, 3);
 
-        switch(randTimeIndex)
+        //Set Morning
+        if (randTimeIndex == 0)
         {
-            case 0: //Set Morning
-                timeOfDay = TimeOfDay.Morning;
-                break;
-            case 1: //Set Afternoon
-                timeOfDay = TimeOfDay.Afternoon;
-                break;
-            case 2: //Set Night
-                timeOfDay = TimeOfDay.Night;
-                break;
-            default:
-                Debug.LogWarning("Invalid Index for TimeOfDay!");
-                timeOfDay = TimeOfDay.Morning;
-                break;
+            timeOfDay = TimeOfDay.Morning;
+            Debug.Log("Time set to Morning");
+        }
+        //Set Afternoon
+        else if (randTimeIndex == 1)
+        {
+            timeOfDay = TimeOfDay.Afternoon;
+            Debug.Log("Time set to Afternoon");
+        }
+        //Set Night
+        else if (randTimeIndex == 2)
+        {
+            timeOfDay = TimeOfDay.Night;
+            Debug.Log("Time set to Night");
+        }
+        else
+        {
+            Debug.LogError("Invalid index given to set time of day");
         }
     }
 

@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: Kilan Larsen
+ * Description: A scriptable object to generate each enemy type and associated information
+ * Last Modified: 9/22/22
+*/
+
 public enum EnemyClasses
 {
     Archers,
     Assassins,
-    Grunts
+    Grunts,
+    Any //Used for inspector purposes only
 }
 
 [CreateAssetMenu(menuName = "Enemy Type")]
@@ -19,35 +26,7 @@ public class EnemyTypes : ScriptableObject
     public float speed;
     [Range(0, 1)] public float spawnRate;
 
-    private void Start()
-    {
-        Debug.Log("Testing!!");
-        //SetTimeOfDayStatChanges();
-    }
-
-    private void SetTimeOfDayStatChanges()
-    {
-        //Morning Stat Changes
-        if (GameManager.Instance.GetTimeOfDay() == TimeOfDay.Morning)
-        {
-            if (enemyClass == EnemyClasses.Archers)
-            {
-                //enemyType.
-            }
-        }
-        //Afternoon Stat Changes
-        else if (GameManager.Instance.GetTimeOfDay() == TimeOfDay.Afternoon)
-        {
-
-        }
-        //Night Stat Changes
-        else
-        {
-
-        }
-    }
-
-    //Prevent negative value inputs
+    //Prevent negative value inputs in the inspector
     private void OnValidate()
     {
         attackPower = Mathf.Clamp(attackPower, 0, int.MaxValue);

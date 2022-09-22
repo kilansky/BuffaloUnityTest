@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Author: Kilan Larsen
+ * Description: A pattern to easily set up Singletons throughout the project
+ * Last Modified: 9/22/22
+*/
+
 public abstract class SingletonPattern<T> : MonoBehaviour where T : SingletonPattern<T>
 {
     public static T Instance;
